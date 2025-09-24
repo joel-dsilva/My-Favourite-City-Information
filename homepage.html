@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Udaipur - Home</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #fff8f0;
+      color: #333;
+      padding-top: 76px;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 600px;
+      background: linear-gradient(to bottom right, #ffa500, #ff69b4, #9370db);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+      margin-top: -76px;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=800&fit=crop') center/cover no-repeat;
+      opacity: 0.4;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+    }
+    
+    .hero h1 {
+      font-size: 4rem;
+      background: linear-gradient(to right, #ffd700, #ffa500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero h2 {
+      font-size: 1.5rem;
+      color: #fffacd;
+      margin-bottom: 20px;
+    }
+    
+    .location {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+    }
+    
+    /* Intro Section */
+    .intro-text h2 {
+      font-size: 2.5rem;
+      background: linear-gradient(to right, #ff8c00, #ff69b4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .stat-box {
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      background: linear-gradient(to bottom right, #ffe4b5, #ffc0cb);
+      height: 100%;
+      transition: transform 0.3s;
+    }
+    
+    .stat-box:hover {
+      transform: translateY(-5px);
+    }
+    
+    .stat-box h3 {
+      font-size: 1.5rem;
+      color: #ff4500;
+    }
+    
+    .intro img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Timeline */
+    .timeline {
+      background: linear-gradient(to right, #fff5ee, #ffe4e1, #f8f4ff);
+      padding: 60px 0;
+    }
+    
+    .timeline h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      background: linear-gradient(to right, #800080, #ff69b4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 40px;
+    }
+    
+    .timeline-card {
+      background: white;
+      border-left: 5px solid;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      height: 100%;
+      transition: transform 0.3s;
+    }
+    
+    .timeline-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Featured Stories */
+    .stories {
+      padding: 60px 0;
+    }
+    
+    .stories h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      background: linear-gradient(to right, #1e90ff, #9370db);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 40px;
+    }
+    
+    .story-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+    
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    
+    .story-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    /* Fun Facts */
+    .fun-facts {
+      background: linear-gradient(to bottom right, #4b0082, #00008b, #191970);
+      color: white;
+      padding: 60px 0;
+    }
+    
+    .fun-facts h2 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+    
+    .fact {
+      text-align: center;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 15px;
+      height: 100%;
+      transition: transform 0.3s;
+    }
+    
+    .fact:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero h2 {
+        font-size: 1.2rem;
+      }
+      
+      body {
+        padding-top: 70px;
+      }
+      
+      .hero {
+        margin-top: -70px;
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bootstrap Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(90deg, #f97316, #ec4899, #8b5cf6);">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="navigation.html">
+        <i class="fas fa-crown me-2"></i>Udaipur - City of Lakes
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="homepage.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="attractions.html">Attractions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="culture.html">Culture</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacts.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🏰 UDAIPUR 🏰</h1>
+      <h2>The Venice of the East • City of Lakes • Jewel of Rajasthan</h2>
+      <div class="location">📍 Rajasthan, India</div>
+    </div>
+  </section>
+
+  <!-- Intro Section -->
+  <section class="intro py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="intro-text">
+            <h2 class="mb-4">The Crown Jewel of Rajasthan</h2>
+            <p class="mb-3">Udaipur isn't just a place — it's a feeling. The shimmer of Lake Pichola at sunset, the echo of footsteps in royal courtyards, the aroma of fresh chai on a quiet morning — each moment feels like a story waiting to be told.</p>
+            <p class="mb-4">This blog is where I collect those stories — the colors, the flavors, the whispers of history — so you can see Udaipur not just through my camera, but through my heart.</p>
+            
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="stat-box">
+                  <h3>1559</h3>
+                  <p>Founded</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stat-box">
+                  <h3>11</h3>
+                  <p>Beautiful Lakes</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stat-box">
+                  <h3>UNESCO</h3>
+                  <p>Heritage City</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="udaipur2.jpeg" alt="Udaipur City Palace and Lake Pichola" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline">
+    <div class="container">
+      <h2>Memories in Motion</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="timeline-card" style="border-color:#ff8c00;">
+            <h3>First Morning in Udaipur</h3>
+            <p>The city woke slowly — temple bells in the distance, chai stalls steaming, and the soft glow of sunrise over Lake Pichola.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="timeline-card" style="border-color:#ff69b4;">
+            <h3>An Evening by the Ghats</h3>
+            <p>Sitting on cold stone steps, I watched the sky melt into shades of gold and rose as boats drifted quietly across the water.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="timeline-card" style="border-color:#9370db;">
+            <h3>A Night at the Palace</h3>
+            <p>Under a canopy of stars, the City Palace shimmered — its reflection dancing in the lake like a scene from a dream.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories Section -->
+  <section class="stories">
+    <div class="container">
+      <h2>Stories from the City of Lakes</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="story-card">
+            <img src="citypalace.jpeg" alt="City Palace" class="img-fluid">
+            <div class="content p-3">
+              <h3>The Magnificent City Palace</h3>
+              <p>Discover the architectural marvel that spans 400 years</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="story-card">
+            <img src="Pichola.jpeg" alt="Lake Pichola" class="img-fluid">
+            <div class="content p-3">
+              <h3>Lake Pichola: The Soul of Udaipur</h3>
+              <p>Experience the magic of sunset boat rides...</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="story-card">
+            <img src="thali.jpeg" alt="Rajasthani Cuisine" class="img-fluid">
+            <div class="content p-3">
+              <h3>Rajasthani Cuisine: A Royal Feast</h3>
+              <p>From Dal Baati Churma to Gatte ki Sabzi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fun Facts Section -->
+  <section class="fun-facts">
+    <div class="container">
+      <h2>✨ Fascinating Facts About Udaipur ✨</h2>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="fact">
+            <h3>🎬</h3>
+            <p>Over 100 films shot here</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="fact">
+            <h3>🏨</h3>
+            <p>The Oberoi Udaivilas - World's Best Hotel</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="fact">
+            <h3>🎨</h3>
+            <p>Home to the finest miniature paintings</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="fact">
+            <h3>🌅</h3>
+            <p>Lake Pichola's romantic sunsets</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav>
+            <ul class="nav justify-content-center">
+              <li class="nav-item"><a href="navigation.html" class="nav-link text-white">My Favorite City</a></li>
+              <li class="nav-item"><a href="homepage.html" class="nav-link text-white">Home</a></li>
+              <li class="nav-item"><a href="attractions.html" class="nav-link text-white">Attractions</a></li>
+              <li class="nav-item"><a href="culture.html" class="nav-link text-white">Culture</a></li>
+              <li class="nav-item"><a href="gallery.html" class="nav-link text-white">Gallery</a></li>
+              <li class="nav-item"><a href="contacts.html" class="nav-link text-white">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap & jQuery JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script>
+    $(document).ready(function() {
+      // Smooth scrolling for navigation links
+      $('a.nav-link').on('click', function(event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top - 70
+          }, 800);
+        }
+      });
+      
+      // Add active class to current page in navigation
+      const currentPage = window.location.pathname.split('/').pop();
+      $('.nav-link').each(function() {
+        if ($(this).attr('href') === currentPage) {
+          $(this).addClass('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Udaipur - City of Lakes</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation */
+  .custom-navbar {
+    background: linear-gradient(90deg, #f97316, #ec4899, #8b5cf6);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0;
+  }
+  
+  .navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+  
+  .nav-link {
+    color: white !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin: 0 0.2rem;
+  }
+  
+  .nav-link.active, .nav-link:hover {
+    background: white;
+    color: #7c3aed !important;
+    box-shadow: 0 2px 6px rgba(124, 58, 237, 0.5);
+    transform: scale(1.05);
+  }
+  
+  /* Hero Section */
+  .favorite-city {
+    position: relative;
+    background-image: url('udaipur.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .favorite-city::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #ffd700, #ffa500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  }
+  
+  .btn-explore {
+    background: linear-gradient(45deg, #ec4899, #8b5cf6);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  
+  .btn-explore:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  }
+  
+  /* Quick Links Section */
+  .quick-links {
+    background: linear-gradient(to bottom, #fff8f0, #fff0f5);
+    padding: 4rem 0;
+  }
+  
+  .link-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 3px solid transparent;
+  }
+  
+  .link-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    border-color: #ec4899;
+  }
+  
+  .link-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #f97316, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .link-card h3 {
+    color: #7c3aed;
+    margin-bottom: 1rem;
+  }
+  
+  /* Highlights Section */
+  .highlights {
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .highlight-item {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .highlight-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #ffd700;
+  }
+  
+  /* Footer */
+  .custom-footer {
+    background: linear-gradient(90deg, #1a1a1a, #2d2d2d);
+    color: white;
+    padding: 2rem 0;
+  }
+  
+  /* Scroll Down Indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: white;
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 3rem;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+    }
+    
+    .link-card {
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .hero-content h1 {
+      font-size: 2.2rem;
+    }
+    
+    .hero-content p {
+      font-size: 1rem;
+    }
+    
+    .btn-explore {
+      padding: 10px 25px;
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Bootstrap Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="navigation.html">
+      <i class="fas fa-crown me-2"></i>✨ Udaipur - City of Lakes
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="navigation.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="homepage.html">Discover</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="attractions.html">Attractions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="culture.html">Culture</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="gallery.html">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contacts.html">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="favorite-city">
+  <div class="hero-content">
+    <h1>Welcome to Udaipur</h1>
+    <p>The Venice of the East • City of Lakes • Jewel of Rajasthan</p>
+    <button class="btn btn-explore" onclick="scrollToQuickLinks()">
+      <i class="fas fa-compass me-2"></i>Explore the City
+    </button>
+  </div>
+  <div class="scroll-indicator">
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- Quick Links Section -->
+<section class="quick-links" id="quickLinks">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="display-4 fw-bold" style="background: linear-gradient(to right, #f97316, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Discover Udaipur
+      </h2>
+      <p class="lead">Explore the magic of Rajasthan's most romantic city</p>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="link-card" onclick="window.location.href='attractions.html'">
+          <div class="link-icon">🏰</div>
+          <h3>Royal Attractions</h3>
+          <p>Discover magnificent palaces, serene lakes, and ancient temples that make Udaipur the jewel of Rajasthan</p>
+          <span class="text-primary">Explore →</span>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="link-card" onclick="window.location.href='culture.html'">
+          <div class="link-icon">🎭</div>
+          <h3>Rich Culture</h3>
+          <p>Immerse yourself in Mewar culture - from ancient art forms to vibrant festivals celebrated for centuries</p>
+          <span class="text-primary">Explore →</span>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="link-card" onclick="window.location.href='gallery.html'">
+          <div class="link-icon">📸</div>
+          <h3>Photo Gallery</h3>
+          <p>Explore beautiful moments of the city - from historic landmarks to vibrant street life and celebrations</p>
+          <span class="text-primary">Explore →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Highlights Section -->
+<section class="highlights">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-3">
+        <div class="highlight-item">
+          <div class="highlight-number">11</div>
+          <p>Beautiful Lakes</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="highlight-item">
+          <div class="highlight-number">463+</div>
+          <p>Years of History</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="highlight-item">
+          <div class="highlight-number">100+</div>
+          <p>Films Shot Here</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="highlight-item">
+          <div class="highlight-number">UNESCO</div>
+          <p>Heritage City</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="custom-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5><i class="fas fa-crown me-2"></i>Udaipur - City of Lakes</h5>
+        <p>Discover the magic of Rajasthan's most romantic city, where history meets beauty.</p>
+      </div>
+      <div class="col-md-6">
+        <div class="text-md-end">
+          <a href="contacts.html" class="btn btn-outline-light me-2">
+            <i class="fas fa-envelope me-1"></i>Contact Us
+          </a>
+          <a href="homepage.html" class="btn btn-light">
+            <i class="fas fa-compass me-1"></i>Start Exploring
+          </a>
+        </div>
+      </div>
+    </div>
+    <hr class="my-3">
+    <div class="text-center">
+      <p class="mb-0">&copy; 2024 Udaipur City Guide. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap & jQuery JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+  // Smooth scrolling function
+  function scrollToQuickLinks() {
+    $('html, body').animate({
+      scrollTop: $('#quickLinks').offset().top - 70
+    }, 1000);
+  }
+  
+  // Add active class to current page in navigation
+  $(document).ready(function() {
+    const currentPage = window.location.pathname.split('/').pop();
+    $('.nav-link').each(function() {
+      if ($(this).attr('href') === currentPage) {
+        $(this).addClass('active');
+      }
+    });
+    
+    // Smooth scrolling for navigation links
+    $('a.nav-link').on('click', function(event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+        const hash = this.hash;
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top - 70
+        }, 800);
+      }
+    });
+    
+    // Parallax effect for hero section
+    $(window).scroll(function() {
+      const scrolled = $(window).scrollTop();
+      $('.favorite-city').css('background-position', 'center ' + (scrolled * 0.5) + 'px');
+    });
+    
+    // Animate numbers counting
+    $('.highlight-number').each(function() {
+      if ($(this).text() === 'UNESCO') return;
+      
+      const $this = $(this);
+      const target = parseInt($this.text());
+      let count = 0;
+      
+      const timer = setInterval(() => {
+        if (count >= target) {
+          clearInterval(timer);
+          return;
+        }
+        count += Math.ceil(target / 50);
+        if (count > target) count = target;
+        $this.text(count + (target === 463 ? '+' : ''));
+      }, 30);
+    });
+  });
+</script>
+
+</body>
+</html>

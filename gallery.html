@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Udaipur City Gallery</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #ffe0b2, #fff9c4, #f8bbd0);
+    margin: 0;
+    padding: 0;
+    padding-top: 76px;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #e65100;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(to right, #e65100, #ec4899, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 10px auto 30px;
+    color: #555;
+    font-size: 1.1rem;
+  }
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 0 20px 40px;
+  }
+  
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  
+  .gallery-item:hover img {
+    transform: scale(1.1);
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-weight: bold;
+  }
+
+  /* Summary Dialog Box */
+  .summary-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin: 3rem auto;
+    max-width: 900px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-left: 5px solid #ffd700;
+  }
+  
+  .summary-box h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #ffd700;
+  }
+  
+  .summary-box p {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  
+  .summary-icon {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(to right, #ec4899, #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .back-to-top.show {
+    opacity: 1;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .summary-box {
+      padding: 2rem 1.5rem;
+      margin: 2rem auto;
+    }
+    
+    .summary-box h2 {
+      font-size: 1.6rem;
+    }
+    
+    body {
+      padding-top: 70px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+    
+    .subtitle {
+      font-size: 1rem;
+      padding: 0 15px;
+    }
+    
+    .gallery {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      padding: 0 15px 30px;
+    }
+    
+    .summary-box {
+      padding: 1.5rem 1rem;
+    }
+    
+    .summary-box p {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Bootstrap Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(90deg, #e65100, #ec4899, #8b5cf6);">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="navigation.html">
+        <i class="fas fa-camera me-2"></i>Udaipur Gallery
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="homepage.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="attractions.html">Attractions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="culture.html">Culture</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacts.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <h1>🏰 Udaipur City Gallery 🏰</h1>
+    <p class="subtitle">Explore the most beautiful and iconic moments of the city — from historic landmarks to vibrant street life.</p>
+
+    <!-- Original Gallery Layout -->
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="citypalace.jpeg" alt="The City Palace">
+        <div class="overlay">The City Palace</div>
+      </div>
+      <div class="gallery-item">
+        <img src="Pichola.jpeg" alt="Lake Pichola">
+        <div class="overlay">Lake Pichola</div>
+      </div>
+      <div class="gallery-item">
+        <img src="sajjangarh.jpg" alt="Sajjangarh Palace">
+        <div class="overlay">Sajjangarh Palace</div>
+      </div>
+      <div class="gallery-item">
+        <img src="Jag-Mandir.jpg" alt="Jag Mandir">
+        <div class="overlay">Jag Mandir</div>
+      </div>
+      <div class="gallery-item">
+        <img src="temple.jpg" alt="Jagdish Temple">
+        <div class="overlay">Jagdish Temple</div>
+      </div>
+      <div class="gallery-item">
+        <img src="festival1.jpg" alt="Udaipur Winter Festival">
+        <div class="overlay">Udaipur Winter Festival</div>
+      </div>
+      <div class="gallery-item">
+        <img src="show.jpeg" alt="Traditional Puppet Show">
+        <div class="overlay">Traditional Puppet Show</div>
+      </div>
+      <div class="gallery-item">
+        <img src="market.jpeg" alt="Shilpgram Crafts Festival">
+        <div class="overlay">Shilpgram Crafts Festival</div>
+      </div>
+    </div>
+
+    <!-- Summary Dialog Box -->
+    <div class="summary-box">
+      <span class="summary-icon">🌟</span>
+      <h2>Discover the Magic of Udaipur</h2>
+      <p>
+        Udaipur is a vibrant city full of life and color. Stroll through the bustling streets of the old city like Bada Bazaar and Hathi Pol to shop for handicrafts and souvenirs. Food lovers can enjoy authentic Rajasthani cuisine at popular spots like Ambrai Restaurant by Lake Pichola or Millets of Mewar. Don’t miss experiencing the city’s lively festivals, such as the Mewar Festival, Gangaur, and Shilpgram Crafts Fair, which showcase traditional music, dance, and culture. Exploring Udaipur’s streets, eateries, and festivals offers an unforgettable taste of the city’s heritage.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav>
+            <ul class="nav justify-content-center">
+              <li class="nav-item"><a href="navigation.html" class="nav-link text-white">My Favorite City</a></li>
+              <li class="nav-item"><a href="homepage.html" class="nav-link text-white">Home</a></li>
+              <li class="nav-item"><a href="attractions.html" class="nav-link text-white">Attractions</a></li>
+              <li class="nav-item"><a href="culture.html" class="nav-link text-white">Culture</a></li>
+              <li class="nav-item"><a href="gallery.html" class="nav-link text-white">Gallery</a></li>
+              <li class="nav-item"><a href="contacts.html" class="nav-link text-white">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Bootstrap & jQuery JS -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script>
+    $(document).ready(function() {
+      // Back to top button
+      const backToTopButton = $('#backToTop');
+      
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+          backToTopButton.addClass('show');
+        } else {
+          backToTopButton.removeClass('show');
+        }
+      });
+      
+      backToTopButton.click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 800);
+      });
+      
+      // Add active class to current page in navigation
+      const currentPage = window.location.pathname.split('/').pop();
+      $('.nav-link').each(function() {
+        if ($(this).attr('href') === currentPage) {
+          $(this).addClass('active');
+        }
+      });
+      
+      // Smooth scrolling for navigation links
+      $('a.nav-link').on('click', function(event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top - 70
+          }, 800);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
